@@ -25,3 +25,9 @@ Here are my hubspot form details (check .env for additional information if neede
 SUCCESS CRITERIA:
 - System is able to read Original URL with UTM Parameters
 - Pass UTM Parameters, Click ID and original URL to HubSpot hidden fields if there are any.
+
+If you want, I can next make this even more production-safe by:
+
+adding a small sessionStorage guard for storage quota issues
+making the HubSpot field names configurable
+adding a hidden fallback for the original URL only when present

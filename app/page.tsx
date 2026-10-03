@@ -1,7 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import { getHubspotUtmFields, persistTrackingSnapshot } from "@/lib/utm";
+import { applyTrackingToHubspotForm, persistTrackingSnapshot } from "@/lib/utm";
+
+declare global {
+  interface Window {
+    hbspt?: {
+      forms?: {
+        create: (options: Record<string, unknown>) => void;
+      };
+    };
+  }
+}
 
 const navItems = [
   { label: "Home", href: "#top" },
@@ -60,88 +70,44 @@ export default function Home() {
   useEffect(() => {
     persistTrackingSnapshot();
 
-    const existing = document.querySelector('script[src*="js.hsforms.net/forms/embed"]');
-
-    if (existing) {
-      if ((window as any).hbspt && (window as any).hbspt.forms && typeof (window as any).hbspt.forms.create === "function") {
-        const target = document.getElementById("hubspot-form-target");
-        if (target) {
-          (window as any).hbspt.forms.create({
-            region: "na1",
-            portalId: "44019641",
-            formId: "4cde914f-7695-4cae-9dd8-62273ef78ce8",
-            target: "#hubspot-form-target",
-            onFormReady: function ($form: HTMLFormElement) {
-              const fields = getHubspotUtmFields();
-
-              for (const [name, value] of fields) {
-                if (!value) continue;
-
-                const field = $form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
-                if (field) {
-                  field.value = value;
-                  field.dispatchEvent(new Event("input", { bubbles: true }));
-                  field.dispatchEvent(new Event("change", { bubbles: true }));
-                  continue;
-                }
-
-                const hidden = document.createElement("input");
-                hidden.type = "hidden";
-                hidden.name = name;
-                hidden.value = value;
-                $form.appendChild(hidden);
-                hidden.dispatchEvent(new Event("input", { bubbles: true }));
-                hidden.dispatchEvent(new Event("change", { bubbles: true }));
-              }
-            },
-          });
-        }
-      }
+    const target = document.getElementById("hubspot-form-target");
+    if (!target) {
       return;
     }
 
-    const script = document.createElement("script");
-    script.src = "https://js.hsforms.net/forms/embed/44019641.js";
-    script.defer = true;
-    script.onload = () => {
-      const target = document.getElementById("hubspot-form-target");
+    const hubspotConfig = {
+      region: "na1",
+      portalId: "44019641",
+      formId: "4cde914f-7695-4cae-9dd8-62273ef78ce8",
+      target: "#hubspot-form-target",
+      onFormReady: (form: Element | null) => {
+        applyTrackingToHubspotForm(form);
+      },
+    };
 
-      if (!target || !(window as any).hbspt || !(window as any).hbspt.forms || typeof (window as any).hbspt.forms.create !== "function") {
+    const loadHubspot = () => {
+      if (window.hbspt?.forms?.create) {
+        window.hbspt.forms.create(hubspotConfig);
         return;
       }
 
-      (window as any).hbspt.forms.create({
-        region: "na1",
-        portalId: "44019641",
-        formId: "4cde914f-7695-4cae-9dd8-62273ef78ce8",
-        target: "#hubspot-form-target",
-        onFormReady: function ($form: HTMLFormElement) {
-          const fields = getHubspotUtmFields();
+      const existingScript = document.querySelector('script[src*="js.hsforms.net/forms/embed"]');
+      if (existingScript) {
+        return;
+      }
 
-          for (const [name, value] of fields) {
-            if (!value) continue;
-
-            const field = $form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
-            if (field) {
-              field.value = value;
-              field.dispatchEvent(new Event("input", { bubbles: true }));
-              field.dispatchEvent(new Event("change", { bubbles: true }));
-              continue;
-            }
-
-            const hidden = document.createElement("input");
-            hidden.type = "hidden";
-            hidden.name = name;
-            hidden.value = value;
-            $form.appendChild(hidden);
-            hidden.dispatchEvent(new Event("input", { bubbles: true }));
-            hidden.dispatchEvent(new Event("change", { bubbles: true }));
-          }
-        },
-      });
+      const script = document.createElement("script");
+      script.src = "https://js.hsforms.net/forms/embed/v2.js";
+      script.async = true;
+      script.onload = () => {
+        if (window.hbspt?.forms?.create) {
+          window.hbspt.forms.create(hubspotConfig);
+        }
+      };
+      document.body.appendChild(script);
     };
 
-    document.body.appendChild(script);
+    loadHubspot();
   }, []);
 
   return (
@@ -223,6 +189,9 @@ export default function Home() {
                 <div
                   id="hubspot-form-target"
                   className="hs-form-frame"
+                  data-region="na1"
+                  data-form-id="4cde914f-7695-4cae-9dd8-62273ef78ce8"
+                  data-portal-id="44019641"
                 ></div>
               </div>
             </div>

@@ -13,6 +13,19 @@ export type TrackingValues = {
 };
 
 export const TRACKING_STORAGE_KEY = "eidlclarity_tracking";
+export const HUBSPOT_TRACKING_FIELD_NAMES = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_term",
+  "utm_content",
+  "utm_id",
+  "affiliate_traffic_source_click_id",
+  "original_entry_url_for_utm_capture",
+  "page_url",
+  "page_path",
+  "referrer",
+] as const;
 
 const CLICK_ID_KEYS = ["gclid", "fbclid", "msclkid", "dclid", "twclid"];
 
@@ -106,4 +119,60 @@ export function getHubspotUtmFields() {
     ["page_path", values.page_path],
     ["referrer", values.referrer],
   ] as const;
+}
+
+export function getHubspotTrackingValues(): Partial<Record<(typeof HUBSPOT_TRACKING_FIELD_NAMES)[number], string>> {
+  const values = persistTrackingSnapshot();
+
+  return {
+    utm_source: values.utm_source || "",
+    utm_medium: values.utm_medium || "",
+    utm_campaign: values.utm_campaign || "",
+    utm_term: values.utm_term || "",
+    utm_content: values.utm_content || "",
+    utm_id: values.utm_id || "",
+    affiliate_traffic_source_click_id: values.click_id || "",
+    original_entry_url_for_utm_capture: values.original_url || "",
+    page_url: values.page_url || "",
+    page_path: values.page_path || "",
+    referrer: values.referrer || "",
+  };
+}
+
+export function applyTrackingToHubspotForm(form: Element | null): void {
+  if (!form || typeof window === "undefined") {
+    return;
+  }
+
+  const values = getHubspotTrackingValues();
+
+  for (const [fieldName, value] of Object.entries(values)) {
+    if (!value) {
+      continue;
+    }
+
+    const selector = [
+      `input[name="${fieldName}"]`,
+      `textarea[name="${fieldName}"]`,
+      `select[name="${fieldName}"]`,
+      `input[data-name="${fieldName}"]`,
+      `input[id="${fieldName}"]`,
+    ].join(", ");
+
+    const input = form.querySelector(selector) as
+      | HTMLInputElement
+      | HTMLTextAreaElement
+      | HTMLSelectElement
+      | null;
+
+    if (!input) {
+      continue;
+    }
+
+    input.value = value;
+    input.setAttribute("value", value);
+
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+    input.dispatchEvent(new Event("change", { bubbles: true }));
+  }
 }

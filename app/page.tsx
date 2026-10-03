@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { getHubspotUtmFields } from "@/lib/utm";
 
 const navItems = [
   { label: "Home", href: "#top" },
@@ -64,41 +63,7 @@ export default function Home() {
 
     const script = document.createElement("script");
     script.src = "https://js.hsforms.net/forms/embed/44019641.js";
-    script.async = true;
-    script.onload = () => {
-      const target = document.getElementById("hubspot-form-target");
-
-      if (!target || !(window as any).hbspt || !(window as any).hbspt.forms || typeof (window as any).hbspt.forms.create !== "function") {
-        return;
-      }
-
-      (window as any).hbspt.forms.create({
-        region: "na1",
-        portalId: "44019641",
-        formId: "4cde914f-7695-4cae-9dd8-62273ef78ce8",
-        target: "#hubspot-form-target",
-        onFormReady: function ($form: HTMLFormElement) {
-          const fields = getHubspotUtmFields();
-
-          for (const [name, value] of fields) {
-            if (!value) continue;
-
-            const input = $form.querySelector<HTMLInputElement>(`input[name="${name}"]`);
-            if (input) {
-              input.value = value;
-              continue;
-            }
-
-            const hidden = document.createElement("input");
-            hidden.type = "hidden";
-            hidden.name = name;
-            hidden.value = value;
-            $form.appendChild(hidden);
-          }
-        },
-      });
-    };
-
+    script.defer = true;
     document.body.appendChild(script);
   }, []);
 
@@ -179,8 +144,10 @@ export default function Home() {
             <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_24px_70px_rgba(15,23,42,0.10)]">
               <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
                 <div
-                  id="hubspot-form-target"
                   className="hs-form-frame"
+                  data-region="na1"
+                  data-form-id="4cde914f-7695-4cae-9dd8-62273ef78ce8"
+                  data-portal-id="44019641"
                 ></div>
               </div>
             </div>

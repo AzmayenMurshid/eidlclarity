@@ -75,6 +75,15 @@ export default function Home() {
       return;
     }
 
+    const applyTrackingSafely = (root: ParentNode | Element | null) => {
+      if (!root) {
+        return;
+      }
+
+      const form = root.querySelector("form") || (root as Element).closest("form");
+      applyTrackingToHubspotForm(form as Element | null);
+    };
+
     const hubspotConfig = {
       region: "na1",
       portalId: "44019641",
@@ -82,12 +91,36 @@ export default function Home() {
       target: "#hubspot-form-target",
       onFormReady: (form: Element | null) => {
         applyTrackingToHubspotForm(form);
+
+        let attempts = 0;
+        const retry = () => {
+          if (attempts >= 12) {
+            return;
+          }
+
+          attempts += 1;
+          applyTrackingSafely(form || target);
+          setTimeout(retry, 250);
+        };
+
+        retry();
       },
     };
 
     const loadHubspot = () => {
       if (window.hbspt?.forms?.create) {
         window.hbspt.forms.create(hubspotConfig);
+
+        const observer = new MutationObserver(() => {
+          applyTrackingSafely(target);
+        });
+
+        observer.observe(target, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+        });
+
         return;
       }
 
@@ -102,6 +135,16 @@ export default function Home() {
       script.onload = () => {
         if (window.hbspt?.forms?.create) {
           window.hbspt.forms.create(hubspotConfig);
+
+          const observer = new MutationObserver(() => {
+            applyTrackingSafely(target);
+          });
+
+          observer.observe(target, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+          });
         }
       };
       document.body.appendChild(script);

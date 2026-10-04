@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { applyTrackingToHubspotForm, persistTrackingSnapshot } from "@/lib/utm";
+import {
+  applyTrackingToHubspotForm,
+  getHubspotTrackingValues,
+  persistTrackingSnapshot,
+} from "@/lib/utm";
 
 declare global {
   interface Window {
@@ -69,6 +73,7 @@ const faqs = [
 export default function Home() {
   useEffect(() => {
     persistTrackingSnapshot();
+    const hiddenFields = getHubspotTrackingValues();
 
     const target = document.getElementById("hubspot-form-target");
     if (!target) {
@@ -89,6 +94,7 @@ export default function Home() {
       portalId: "44019641",
       formId: "4cde914f-7695-4cae-9dd8-62273ef78ce8",
       target: "#hubspot-form-target",
+      hiddenFields,
       onFormReady: (form: Element | null) => {
         applyTrackingToHubspotForm(form);
 

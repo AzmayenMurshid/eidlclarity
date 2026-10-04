@@ -132,7 +132,7 @@ export function getHubspotTrackingValues(): Partial<Record<(typeof HUBSPOT_TRACK
     utm_content: values.utm_content || "",
     utm_id: values.utm_id || "",
     affiliate_traffic_source_click_id: values.click_id || "",
-    original_entry_url_for_utm_capture: values.original_url || "",
+    original_entry_url_for_utm_capture: values.original_url,
     page_url: values.page_url || "",
     page_path: values.page_path || "",
     referrer: values.referrer || "",

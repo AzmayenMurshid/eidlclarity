@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     apple: "/clarity/icon.png",
   },
 };
-
+ 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html

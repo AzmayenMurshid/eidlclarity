@@ -191,8 +191,8 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <div className="box-shadow-5px p-3 backdrop-blur-[1px] w-[90%]">
-                <div className="rounded-[10px] border border-white/20 bg-white/90 p-3">
+              <div className="box-shadow-5px mx-auto w-[82%] max-w-[420px] p-2 backdrop-blur-[1px]">
+                <div className="rounded-[10px] border border-white/20 bg-white/90 p-2">
                   <div
                     id="hubspot-form-target"
                     className="hs-form-frame"

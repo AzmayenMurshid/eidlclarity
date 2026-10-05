@@ -22,7 +22,6 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "FAQ", href: "#faq" },
   { label: "Resources", href: "#resources" },
-  { label: "Contact", href: "#contact" },
 ];
 
 const steps = [

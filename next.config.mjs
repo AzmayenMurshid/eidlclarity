@@ -10,7 +10,7 @@ const nextConfig = {
 
   basePath: "",
 
-  trailingSlash: true,
+  trailingSlash: false,
  
   images: {
 

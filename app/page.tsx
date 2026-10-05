@@ -162,59 +162,47 @@ export default function Home() {
   return (
     <div id="top" className="min-h-screen bg-[#f2f5f8] text-slate-900">
       <header className="sticky top-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-10">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#152c58] text-lg font-bold text-white">
-              E
-            </div>
-            <div>
-              <div className="text-lg font-bold tracking-tight text-slate-900">
-                EIDL Clarity
-              </div>
+            <div className="flex items-center justify-center rounded-xl p-1.5">
+              <img src="/clarity/clarity-logo.png" alt="EIDL Clarity Logo" className="h-16 w-auto" />
             </div>
           </div>
-
-          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-700 md:flex">
+          <nav className="hidden items-center gap-5 text-sm font-medium text-slate-700 md:flex">
             {navItems.map((item) => (
               <a key={item.label} href={item.href} className="transition hover:text-[#007b5b]">
                 {item.label}
               </a>
             ))}
           </nav>
-
-          <a
-            href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-[#152c58] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-[#007b5b]"
-          >
-            Book a consult
-          </a>
         </div>
       </header>
 
       <main>
-        <section className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-24">
+        <section
+          className="relative w-full overflow-hidden border border-slate-200 px-6 py-16 shadow-[0_24px_70px_rgba(15,23,42,0.10)] lg:px-10 lg:py-24"
+          style={{
+            backgroundImage: "url('/clarity/eidl clarity hero background.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
           <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <span className="inline-flex rounded-full border border-[#cde3cc] bg-[#f2f5f8] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#007b5b]">
+              <span className="inline-flex px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#007b5b]">
                 Small-business loan guidance
               </span>
 
-              <h1 className="mt-6 max-w-xl text-4xl font-black leading-tight tracking-tight text-slate-950 md:text-5xl lg:text-6xl">
-                Clarity for every step in your SBA loan journey.
+              <h1 className="mt-6 max-w-xl text-4xl font-black leading-tight tracking-tight text-white text-slate-950 md:text-5xl lg:text-6xl">
+                See if you Qualify
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-                EIDL Clarity helps business owners understand SBA disaster loan issues, next steps,
-                and the information that matters most before making a decision.
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600 text-white">
+                If your business is struggling with a COVID EIDL, has closed, or you&#39;re unsure what to do next, there may be options available based on your situation.
+                Answer a few quick questions to see if your EIDL situation may qualify for a resolution review.
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-full bg-[#152c58] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#007b5b]"
-                >
-                  Schedule a consultation
-                </a>
                 <a
                   href="#about"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
@@ -225,23 +213,24 @@ export default function Home() {
 
               <div className="mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                  <div key={stat.label} className="rounded-[10px] border border-slate-200 bg-white p-4 shadow-sm">
                     <div className="text-2xl font-black text-[#152c58]">{stat.value}</div>
                     <div className="mt-1 text-sm text-slate-600">{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_24px_70px_rgba(15,23,42,0.10)]">
-              <div className="rounded-[22px] border border-slate-200 bg-slate-50 p-4">
-                <div
-                  id="hubspot-form-target"
-                  className="hs-form-frame"
-                  data-region="na1"
-                  data-form-id="4cde914f-7695-4cae-9dd8-62273ef78ce8"
-                  data-portal-id="44019641"
-                ></div>
+            <div>
+              <div className="box-shadow-5px p-4 backdrop-blur-[1px]">
+                <div className="rounded-[10px] border border-white/20 bg-white/90 p-4">
+                  <div
+                    id="hubspot-form-target"
+                    className="hs-form-frame"
+                    data-region="na1"
+                    data-form-id="4cde914f-7695-4cae-9dd8-62273ef78ce8"
+                    data-portal-id="44019641"
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
@@ -254,8 +243,13 @@ export default function Home() {
                 Why EIDL Clarity
               </p>
               <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-                Clear answers when your loan questions feel overwhelming.
+                When Forgiveness Isn&#39;t an Option, Resolution May Be
               </h2>
+              <p className="mt-4 text-base leading-7 text-slate-600">
+                Many business owners are still waiting and hoping their COVID EIDL will simply go away. Resolution is different. 
+                It starts with understanding your loan, your business status, your ability to repay, and the options that may be available based on your specific circumstances. 
+                Depending on your situation, there may be paths worth exploring before simply continuing to wait.
+              </p>
             </div>
 
             <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -317,7 +311,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="resources" className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+        <section id="resources" className="mx-auto px-6 py-20 lg:px-10">
           <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm md:p-12">
             <div className="mx-auto max-w-3xl text-center">
               <div>
@@ -332,7 +326,7 @@ export default function Home() {
                   href="#top"
                   className="mt-8 inline-flex items-center justify-center rounded-full bg-[#152c58] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#007b5b]"
                 >
-                  Go to the Start Form
+                  Get Free Consultation
                 </a>
               </div>
             </div>
@@ -347,12 +341,25 @@ export default function Home() {
             <h2 className="mt-4 text-3xl font-black tracking-tight md:text-4xl">
               Get a clearer understanding of your next step.
             </h2>
-            <a
-              href="mailto:hello@eidlclarity.com"
-              className="mt-8 inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#152c58] transition hover:bg-[#ffaf03]"
-            >
-              Contact EIDL Clarity
-            </a>
+            <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="mailto:hello@eidlclarity.com"
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#152c58] transition hover:bg-[#ffaf03]"
+              >
+                Contact EIDL Clarity
+              </a>
+              <a
+                href="/privacy-policy"
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#152c58] transition hover:bg-[#ffaf03]"
+              >
+                Privacy Policy
+              </a>
+            </div>
+            <p className="mt-6 text-sm text-[#e8eae9]">
+              Many business owners are still waiting and hoping their COVID EIDL will simply go away. Resolution is different. 
+              It starts with understanding your loan, your business status, your ability to repay, and the options that may be available based on your specific circumstances. 
+              Depending on your situation, there may be paths worth exploring before simply continuing to wait.
+              </p>
           </div>
         </section>
       </main>
@@ -360,10 +367,12 @@ export default function Home() {
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between lg:px-10">
           <div>© 2026 EIDL Clarity</div>
-          <div className="flex gap-5">
+          <div className="flex items-center gap-5">
             <a href="#about" className="hover:text-slate-900">About</a>
             <a href="#faq" className="hover:text-slate-900">FAQ</a>
             <a href="#contact" className="hover:text-slate-900">Contact</a>
+            <span className="text-slate-400">|</span>
+            <a href="/privacy-policy" className="hover:text-slate-900">Privacy Policy</a>
           </div>
         </div>
       </footer>

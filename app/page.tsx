@@ -178,10 +178,6 @@ export default function Home() {
         >
           <div className="mx-auto grid max-w-7xl items-center gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
             <div>
-              <span className="inline-flex px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#007b5b]">
-                Small-business loan guidance
-              </span>
-
               <h1 className="mt-6 max-w-xl text-4xl font-black leading-tight tracking-tight text-white text-slate-950 md:text-5xl lg:text-6xl">
                 See if you Qualify
               </h1>
@@ -213,9 +209,6 @@ export default function Home() {
         <section id="about" className="border-y border-slate-200 bg-white">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#007b5b]">
-                Why EIDL Clarity
-              </p>
               <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
                 When Forgiveness Isn&#39;t an Option, Resolution May Be
               </h2>
@@ -232,7 +225,6 @@ export default function Home() {
           <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1.25fr]">
             <div className="space-y-5">
               <div className="mb-4">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#007b5b]">How it works</p>
                 <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
                   Every EIDL Solution Is Different
                 </h2>
@@ -291,9 +283,9 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="resources" className="pt-8 pb-[40px]">
+        <section id="resources" className="pt-8 pb-0">
           <div
-            className="relative mx-auto rounded-[10px] overflow-hidden border-slate-200 shadow-sm md:p-12"
+            className="relative mx-auto overflow-hidden border-slate-200 shadow-sm md:p-12"
             style={{
               backgroundImage: "url('/clarity/eidlclarity guidance.png')",
               backgroundSize: 'cover',
@@ -303,7 +295,6 @@ export default function Home() {
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,30,54,0.20),rgba(14,30,54,0.82))] backdrop-blur-sm" />
             <div className="relative mx-auto  px-8 py-12 text-center md:px-12">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#ffaf03]">Resources</p>
                 <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-4xl">
                   Need guidance before your next move?
                 </h2>
@@ -322,26 +313,11 @@ export default function Home() {
         </section>
 
         <section id="contact" className="mt-0 bg-[#152c58]">
-          <div className="mx-auto max-w-7xl px-6 py-16 text-center text-white lg:px-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#ffaf03]">
-              Ready when you are
-            </p>
+          <div className="mx-auto max-w-7xl px-6 py-12 text-center text-white lg:px-10">
             <h2 className="mt-4 text-3xl font-black tracking-tight md:text-4xl">
               Get a clearer understanding of your next step.
             </h2>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="mailto:hello@eidlclarity.com"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#152c58] transition hover:bg-[#ffaf03]"
-              >
-                Contact EIDL Clarity
-              </a>
-              <a
-                href="/privacy-policy"
-                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#152c58] transition hover:bg-[#ffaf03]"
-              >
-                Privacy Policy
-              </a>
             </div>
             <p className="mt-6 text-sm text-[#e8eae9]">
               Many business owners are still waiting and hoping their COVID EIDL will simply go away. Resolution is different. 

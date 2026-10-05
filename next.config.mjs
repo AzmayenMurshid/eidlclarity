@@ -8,7 +8,7 @@ const nextConfig = {
 
   output: "export",
 
-  basePath: "/",
+  basePath: "",
 
   trailingSlash: true,
  

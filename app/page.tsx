@@ -25,48 +25,37 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-const stats = [
-  { value: "1k+", label: "businesses guided" },
-  { value: "24/7", label: "loan review support" },
-  { value: "100%", label: "focused on clarity" },
-];
-
-const services = [
-  {
-    title: "EIDL Review",
-    text: "Understand your SBA loan terms, decisions, and required next steps with practical guidance.",
-  },
-  {
-    title: "Document Clarity",
-    text: "Translate confusing SBA correspondence into plain-English action items your team can follow.",
-  },
-  {
-    title: "Action Planning",
-    text: "Get a clear roadmap for what to do next, including referrals, documentation, and follow-up timing.",
-  },
-];
-
 const steps = [
-  "Share your loan details and SBA communications.",
-  "Review the key issues, timelines, and next steps.",
-  "Move forward with a clear, informed plan.",
+  {
+    title: "Business Status",
+    detail: "Is the business still operating, struggling, or permanently closed?",
+  },
+  {
+    title: "Loan & Guarantee Details",
+    detail: "Loan amount, collateral, and whether a personal guarantee applies can matter.",
+  },
+  {
+    title: "Financial Situation",
+    detail: "Your ability to repay and the financial condition of the business can affect which options may warrant further review. ",
+  },
 ];
 
-const faqs = [
+const reviewSteps = [
   {
-    question: "What is EIDL Clarity?",
-    answer:
-      "EIDL Clarity helps business owners interpret SBA disaster loan information and determine the most sensible path forward.",
+    title: "Tell Us About Your Situation",
+    detail: "Answer a few basic questions about your business and EIDL.",
   },
   {
-    question: "Who is this for?",
-    answer:
-      "It is designed for small business owners, lenders, and operators navigating EIDL questions, SBA notices, or loan issue concerns.",
+    title: "Initial Qualification Review",
+    detail: "Your information is reviewed to determine whether your situation may be appropriate for further evaluation.",
   },
   {
-    question: "Do you provide legal advice?",
-    answer:
-      "We provide educational guidance and practical support, while encouraging clients to seek legal or financial counsel when needed.",
+    title: "Understand Your Options",
+    detail: "If appropriate, you will learn what potential resolution paths may warrant further review.",
+  },
+  {
+    title: "Determine Next Steps",
+    detail: "Decide whether moving forward with a more detailed review makes sense for your situation."
   },
 ];
 
@@ -187,7 +176,7 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         >
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="mx-auto grid max-w-7xl items-center gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
             <div>
               <span className="inline-flex px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#007b5b]">
                 Small-business loan guidance
@@ -203,26 +192,11 @@ export default function Home() {
               </p>
 
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#about"
-                  className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition hover:border-slate-400"
-                >
-                  Learn more
-                </a>
-              </div>
-
-              <div className="mt-10 grid max-w-xl gap-4 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-[10px] border border-slate-200 bg-white p-4 shadow-sm">
-                    <div className="text-2xl font-black text-[#152c58]">{stat.value}</div>
-                    <div className="mt-1 text-sm text-slate-600">{stat.label}</div>
-                  </div>
-                ))}
               </div>
             </div>
             <div>
-              <div className="box-shadow-5px p-4 backdrop-blur-[1px]">
-                <div className="rounded-[10px] border border-white/20 bg-white/90 p-4">
+              <div className="box-shadow-5px p-3 backdrop-blur-[1px] w-[90%]">
+                <div className="rounded-[10px] border border-white/20 bg-white/90 p-3">
                   <div
                     id="hubspot-form-target"
                     className="hs-form-frame"
@@ -251,42 +225,42 @@ export default function Home() {
                 Depending on your situation, there may be paths worth exploring before simply continuing to wait.
               </p>
             </div>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {services.map((service) => (
-                <div key={service.title} className="rounded-3xl border border-slate-200 bg-[#f2f5f8] p-7 shadow-sm">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#cde3cc] text-xl text-[#152c58]">
-                    ✓
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900">{service.title}</h3>
-                  <p className="mt-3 text-base leading-7 text-slate-600">{service.text}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
-        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-            <div className="rounded-[28px] bg-[#152c58] p-8 text-white shadow-[0_24px_70px_rgba(21,44,88,0.22)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#ffaf03]">
-                How it works
-              </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight">A simpler path to informed action.</h2>
-              <p className="mt-4 text-base leading-7 text-[#e8eae9]">
-                We break down the process into practical steps so you can focus on the right decisions instead of the noise.
-              </p>
-            </div>
-
+        <section className="w-full border-y border-[#dfeaf7] bg-[#edf5ff]/80 px-6 py-20 shadow-[0_20px_50px_rgba(21,44,88,0.06)] lg:px-10">
+          <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1.25fr]">
             <div className="space-y-5">
-              {steps.map((step, index) => (
-                <div key={step} className="flex gap-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#cde3cc] font-bold text-[#152c58]">
-                    {index + 1}
+              <div className="mb-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#007b5b]">How it works</p>
+                <h2 className="mt-3 text-4xl font-black tracking-tight text-slate-950 md:text-5xl">
+                  Every EIDL Solution Is Different
+                </h2>
+                <p className="mt-4 text-lg leading-8 text-slate-600">
+                  The options abailable to a COVID EIDL borrower can depend on several factors.
+                  Understanding the details of your loan and business is an important first step.
+                </p>
+              </div>
+
+              {steps.map((step) => (
+                <div key={step.title} className="flex items-start gap-4 border-b-2 border-slate-300 pb-4 last:border-b-0 last:pb-0">
+                  <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center text-lg font-bold text-[#152c58]">
+                    →
                   </div>
-                  <p className="pt-2 text-lg leading-8 text-slate-700">{step}</p>
+                  <div className="flex-1">
+                    <p className="text-xl font-semibold leading-8 text-slate-800">{step.title}</p>
+                    <p className="mt-1 text-base leading-7 text-slate-600">{step.detail}</p>
+                  </div>
                 </div>
               ))}
+            </div>
+
+            <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_70px_rgba(21,44,88,0.12)]">
+              <img
+                src="/clarity/eidl clarity business collage.png"
+                alt="EIDL Clarity business collage"
+                className="h-full min-h-[420px] w-full object-cover"
+              />
             </div>
           </div>
         </section>
@@ -294,37 +268,51 @@ export default function Home() {
         <section id="faq" className="bg-[#f2f5f8]">
           <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#007b5b]">FAQ</p>
               <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
-                Common questions, answered clearly.
+                How The Review Works
               </h2>
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {faqs.map((item) => (
-                <div key={item.question} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 className="text-lg font-bold text-slate-900">{item.question}</h3>
-                  <p className="mt-3 text-base leading-7 text-slate-600">{item.answer}</p>
+            <div className="mt-12 grid gap-6 md:grid-cols-4 md:gap-8">
+              {reviewSteps.map((item, index) => (
+                <div
+                  key={item.title}
+                  className={
+                    index < reviewSteps.length - 1
+                      ? "border-b border-slate-300 pb-5 md:border-b-0 md:border-r md:pr-8"
+                      : "pb-0 md:pl-8"
+                  }
+                >
+                  <h3 className="text-lg font-bold text-slate-900">{item.title}</h3>
+                  <p className="mt-3 text-base leading-7 text-slate-600">{item.detail}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="resources" className="mx-auto px-6 py-20 lg:px-10">
-          <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-sm md:p-12">
-            <div className="mx-auto max-w-3xl text-center">
+        <section id="resources" className="pt-8 pb-[40px]">
+          <div
+            className="relative mx-auto rounded-[10px] overflow-hidden border-slate-200 shadow-sm md:p-12"
+            style={{
+              backgroundImage: "url('/clarity/eidlclarity guidance.png')",
+              backgroundSize: 'cover',
+              backgroundPosition: 'top center',
+            }}
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,30,54,0.20),rgba(14,30,54,0.82))] backdrop-blur-sm" />
+            <div className="relative mx-auto  px-8 py-12 text-center md:px-12">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#007b5b]">Resources</p>
-                <h2 className="mt-4 text-3xl font-black tracking-tight text-slate-950 md:text-4xl">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#ffaf03]">Resources</p>
+                <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-4xl">
                   Need guidance before your next move?
                 </h2>
-                <p className="mt-4 text-base leading-7 text-slate-600">
+                <p className="mt-4 text-base leading-7 text-slate-100">
                   Start with a conversation. We can help you review your SBA loan situation and map the cleanest, most informed next steps.
                 </p>
                 <a
                   href="#top"
-                  className="mt-8 inline-flex items-center justify-center rounded-full bg-[#152c58] px-7 py-3 text-sm font-semibold text-white transition hover:bg-[#007b5b]"
+                  className="mt-8 inline-flex items-center justify-center rounded-[10px] bg-[#ffaf03] px-7 py-3 text-sm font-semibold text-[#152c58] transition hover:bg-white hover:text-[#152c58]"
                 >
                   Get Free Consultation
                 </a>
@@ -333,7 +321,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="bg-[#152c58]">
+        <section id="contact" className="mt-0 bg-[#152c58]">
           <div className="mx-auto max-w-7xl px-6 py-16 text-center text-white lg:px-10">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#ffaf03]">
               Ready when you are

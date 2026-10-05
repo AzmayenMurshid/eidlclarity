@@ -14,9 +14,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EIDL Clarity | SBA Loan Guidance",
+  title: "EIDL Clarity",
   description:
     "EIDL Clarity helps small businesses understand SBA EIDL issues, next steps, and loan guidance with confidence.",
+  icons: {
+    icon: "/clarity/icon.png",
+    shortcut: "/clarity/icon.png",
+    apple: "/clarity/icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

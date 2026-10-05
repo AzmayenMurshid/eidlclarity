@@ -330,8 +330,6 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-slate-600 md:flex-row md:items-center md:justify-between lg:px-10">
           <div>© 2026 EIDL Clarity</div>
           <div className="flex items-center gap-5">
-            <a href="#about" className="hover:text-slate-900">About</a>
-            <a href="#faq" className="hover:text-slate-900">FAQ</a>
             <a href="https://go.eidlclarity.com/contact-us" className="hover:text-slate-900">Contact</a>
             <span className="text-slate-400">|</span>
             <a href="https://go.eidlclarity.com/privacy-policy" className="hover:text-slate-900">Privacy Policy</a>

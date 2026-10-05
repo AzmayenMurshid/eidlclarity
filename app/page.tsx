@@ -246,7 +246,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-
             <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_24px_70px_rgba(21,44,88,0.12)]">
               <img
                 src="/clarity/eidl clarity business collage.png"
@@ -334,9 +333,9 @@ export default function Home() {
           <div className="flex items-center gap-5">
             <a href="#about" className="hover:text-slate-900">About</a>
             <a href="#faq" className="hover:text-slate-900">FAQ</a>
-            <a href="#contact" className="hover:text-slate-900">Contact</a>
+            <a href="https://go.eidlclarity.com/contact-us" className="hover:text-slate-900">Contact</a>
             <span className="text-slate-400">|</span>
-            <a href="/privacy-policy" className="hover:text-slate-900">Privacy Policy</a>
+            <a href="https://go.eidlclarity.com/privacy-policy" className="hover:text-slate-900">Privacy Policy</a>
           </div>
         </div>
       </footer>

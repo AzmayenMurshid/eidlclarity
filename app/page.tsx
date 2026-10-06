@@ -333,6 +333,7 @@ export default function Home() {
             <a href="https://go.eidlclarity.com/contact-us" className="hover:text-slate-900">Contact</a>
             <span className="text-slate-400">|</span>
             <a href="https://go.eidlclarity.com/privacy-policy" className="hover:text-slate-900">Privacy Policy</a>
+            <a href="https://go.eidlclarity.com/terms" className="hover:text-slate-900">Terms</a>
           </div>
         </div>
       </footer>

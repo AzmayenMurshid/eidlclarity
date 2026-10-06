@@ -168,7 +168,7 @@ export default function Home() {
 
       <main>
         <section
-          className="relative w-full overflow-hidden border border-slate-200 px-6 py-16 shadow-[0_24px_70px_rgba(15,23,42,0.10)] lg:px-10 lg:py-24"
+          className="relative w-full overflow-hidden border border-slate-200 px-[10px] py-10 shadow-[0_24px_70px_rgba(15,23,42,0.10)] sm:px-6 lg:px-10 lg:py-24"
           style={{
             backgroundImage: "url('/clarity/eidl clarity hero background.png')",
             backgroundSize: "cover",
@@ -190,7 +190,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <div className="box-shadow-5px mx-auto w-[82%] max-w-[420px] p-2 backdrop-blur-[1px]">
+              <div className="box-shadow-5px mx-auto w-[calc(100%-20px)] max-w-[475px] p-2 backdrop-blur-[1px] sm:w-full">
                 <div className="rounded-[10px] border border-white/20 bg-white/90 p-2">
                   <div
                     id="hubspot-form-target"
@@ -228,7 +228,7 @@ export default function Home() {
                   Every EIDL Solution Is Different
                 </h2>
                 <p className="mt-4 text-lg leading-8 text-slate-600">
-                  The options abailable to a COVID EIDL borrower can depend on several factors.
+                  The options available to a COVID EIDL borrower can depend on several factors.
                   Understanding the details of your loan and business is an important first step.
                 </p>
               </div>

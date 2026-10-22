@@ -80,7 +80,7 @@ export default function Home() {
     const hubspotConfig = {
       region: "na1",
       portalId: "44019641",
-      formId: "4cde914f-7695-4cae-9dd8-62273ef78ce8",
+      formId: "9b869e0c-4013-4a4c-96a6-bb3c976c6f6c",
       target: "#hubspot-form-target",
       hiddenFields,
       onFormReady: (form: Element | null) => {
@@ -196,7 +196,7 @@ export default function Home() {
                     id="hubspot-form-target"
                     className="hs-form-frame"
                     data-region="na1"
-                    data-form-id="4cde914f-7695-4cae-9dd8-62273ef78ce8"
+                    data-form-id="9b869e0c-4013-4a4c-96a6-bb3c976c6f6c"
                     data-portal-id="44019641"
                   ></div>
                 </div>

@@ -80,7 +80,7 @@ export default function Home() {
     const hubspotConfig = {
       region: "na1",
       portalId: "44019641",
-      formId: "9b869e0c-4013-4a4c-96a6-bb3c976c6f6c",
+      formId: "9f54dd54-bc9d-48fd-9174-a7954f0076d5",
       target: "#hubspot-form-target",
       hiddenFields,
       onFormReady: (form: Element | null) => {
@@ -124,7 +124,7 @@ export default function Home() {
       }
 
       const script = document.createElement("script");
-      script.src = "https://js.hsforms.net/forms/embed/v2.js";
+      script.src = "https://js.hsforms.net/forms/embed/44019641.js";
       script.async = true;
       script.onload = () => {
         if (window.hbspt?.forms?.create) {
@@ -196,7 +196,7 @@ export default function Home() {
                     id="hubspot-form-target"
                     className="hs-form-frame"
                     data-region="na1"
-                    data-form-id="9b869e0c-4013-4a4c-96a6-bb3c976c6f6c"
+                    data-form-id="9f54dd54-bc9d-48fd-9174-a7954f0076d5"
                     data-portal-id="44019641"
                   ></div>
                 </div>
